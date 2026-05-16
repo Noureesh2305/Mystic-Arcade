@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mystic Arcade: classic games reborn through magic in a lightweight cinematic browser arcade."
+    />
+    <title>Mystic Arcade</title>
+    <link rel="stylesheet" href="/frontend/css/styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.164.1/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.164.1/examples/jsm/",
+          "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="arcade-canvas" aria-label="Mystic Arcade floating portal hub"></canvas>
+      <div id="webgl-dim" aria-hidden="true"></div>
+      <div id="cursor-magic" aria-hidden="true"></div>
+      <div id="transition-veil" aria-hidden="true">
+        <div class="veil-ring"></div>
+        <div class="veil-title">Opening Portal</div>
+      </div>
+
+      <section id="intro" class="intro" aria-live="polite">
+        <p class="intro-kicker">Classic games reborn through magic.</p>
+        <h1>Mystic Arcade</h1>
+        <button id="enter-button" class="primary-button" type="button">Enter the Arcade</button>
+      </section>
+
+      <header id="topbar" class="topbar" aria-label="Arcade status">
+        <div>
+          <span>Realm</span>
+          <strong id="realm-name">Arcade Hub</strong>
+        </div>
+        <div>
+          <span>Total Score</span>
+          <strong id="total-score">0</strong>
+        </div>
+        <div>
+          <span>Best Combo</span>
+          <strong id="best-combo">0x</strong>
+        </div>
+        <button id="mute-button" class="icon-button" type="button" aria-label="Toggle audio" title="Toggle audio">♪</button>
+      </header>
+
+      <aside id="portal-panel" class="portal-panel" aria-label="Portal selection">
+        <p class="panel-kicker">Choose a portal</p>
+        <h2 id="portal-title">Hover a Game Portal</h2>
+        <p id="portal-copy">Drag gently to orbit the floating arcade, then click a glowing portal to play.</p>
+        <button id="play-selected" class="primary-button" type="button" disabled>Open Portal</button>
+      </aside>
+
+      <main id="game-shell" class="game-shell" aria-live="polite">
+        <div class="game-top">
+          <button id="hub-button" class="ghost-button" type="button">Return to Hub</button>
+          <div>
+            <span id="game-subtitle">Mystic Arcade</span>
+            <h2 id="game-title">Arcade Hub</h2>
+          </div>
+          <div class="game-score">
+            <span>Score</span>
+            <strong id="game-score">0</strong>
+          </div>
+        </div>
+        <section id="game-stage" class="game-stage"></section>
+      </main>
+
+      <div id="toast" class="toast" role="status"></div>
+      <div id="loading" class="loading">Summoning the arcade...</div>
+    </div>
+
+    <script type="module" src="/frontend/js/main.js"></script>
+  </body>
+</html>
