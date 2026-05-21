@@ -8,9 +8,9 @@ import { AnimationManager } from "./core/AnimationManager.js";
 import { TransitionManager } from "./transitions/TransitionManager.js";
 import { MysticMemory } from "./games/MysticMemory.js";
 import { FruitSmash } from "./games/FruitSmash.js";
-import { TotemStack } from "./games/TotemStack.js";
-import { SpellTiles } from "./games/SpellTiles.js";
-import { CrystalCrush } from "./games/CrystalCrush.js";
+import { AstralDodge } from "./games/AstralDodge.js";
+import { CircuitConnector } from "./games/CircuitConnector.js";
+import { NumberPath } from "./games/NumberPath.js";
 
 const canvas = document.querySelector("#arcade-canvas");
 const stage = document.querySelector("#game-stage");
@@ -22,11 +22,66 @@ const cursor = document.querySelector("#cursor-magic");
 const loading = document.querySelector("#loading");
 
 const gameMeta = [
-  { id: "memory", title: "Mystic Memory", tagline: "Rune matching", copy: "Flip floating rune cards, build combos, and survive trickier layouts." },
-  { id: "fruit", title: "Fruit Smash", tagline: "Mouse slicing", copy: "Hold and drag through enchanted fruit to smash them. Hit fruit, avoid bombs." },
-  { id: "totem", title: "Totem Stack", tagline: "Magical balance tower", copy: "Drop enchanted blocks, fight wind and curses, and build the tallest balanced totem." },
-  { id: "tiles", title: "Spell Tiles", tagline: "Rhythm tapping", copy: "Tap falling spell tiles as speed and combo pressure rise." },
-  { id: "crush", title: "Crystal Crush", tagline: "Match three", copy: "Swap crystals to trigger elemental chains and glowing board explosions." },
+  {
+    id: "memory",
+    title: "Mystic Memory",
+    tagline: "Rune matching",
+    copy: "Flip floating rune cards, build combos, and survive trickier layouts.",
+    rules: [
+      { label: "Goal", text: "Find every matching pair of rune cards." },
+      { label: "Move", text: "Click two cards to reveal them." },
+      { label: "Score", text: "Fast matches and streaks increase combo points." },
+      { label: "Round", text: "Clear the board to start a harder layout." },
+    ],
+  },
+  {
+    id: "fruit",
+    title: "Fruit Smash",
+    tagline: "Mouse slicing",
+    copy: "Hold and drag through enchanted fruit to smash them. Hit fruit, avoid bombs.",
+    rules: [
+      { label: "Goal", text: "Slice fruit for points and keep your lives." },
+      { label: "Move", text: "Hold and drag through fruit with mouse or touch." },
+      { label: "Avoid", text: "Bombs remove lives and reset your combo." },
+      { label: "Score", text: "Longer streaks raise speed and score." },
+    ],
+  },
+  {
+    id: "dodge",
+    title: "Astral Dodge",
+    tagline: "Survival movement",
+    copy: "Guide the nexus orb, collect energy sparks, and dodge incoming void shards.",
+    rules: [
+      { label: "Goal", text: "Collect 10 green sparks to advance waves." },
+      { label: "Move", text: "Move the orb with mouse or touch." },
+      { label: "Avoid", text: "Red void shards cost lives." },
+      { label: "Score", text: "Higher waves make hazards faster." },
+    ],
+  },
+  {
+    id: "circuit",
+    title: "Circuit Connector",
+    tagline: "Power the bulb",
+    copy: "Rotate wire pieces to connect the battery circuit and switch on the magical bulb.",
+    rules: [
+      { label: "Goal", text: "Connect the battery to the bulb." },
+      { label: "Move", text: "Click wire tiles to rotate them." },
+      { label: "Hint", text: "Glowing wires are carrying power." },
+      { label: "Score", text: "Use fewer rotations for more points." },
+    ],
+  },
+  {
+    id: "numberPath",
+    title: "Number Path",
+    tagline: "Connect numbers",
+    copy: "Connect numbered checkpoints in order while filling every square of the grid.",
+    rules: [
+      { label: "Goal", text: "Connect 1 to 2 to 3 and fill the entire board." },
+      { label: "Move", text: "Hold and drag across adjacent cells to draw." },
+      { label: "Undo", text: "Drag back onto the previous cell to step back." },
+      { label: "Score", text: "Fewer mistakes give more points." },
+    ],
+  },
 ];
 
 const audio = new AudioManager();
@@ -45,9 +100,9 @@ function makeGame(meta) {
   const deps = { stage, ui, audio, particles: hub.particles, scoreTracker, animation };
   if (meta.id === "memory") return new MysticMemory(deps);
   if (meta.id === "fruit") return new FruitSmash(deps);
-  if (meta.id === "totem") return new TotemStack(deps);
-  if (meta.id === "tiles") return new SpellTiles(deps);
-  return new CrystalCrush(deps);
+  if (meta.id === "dodge") return new AstralDodge(deps);
+  if (meta.id === "circuit") return new CircuitConnector(deps);
+  return new NumberPath(deps);
 }
 
 gameMeta.forEach((meta) => games.set(meta.id, makeGame(meta)));

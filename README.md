@@ -8,9 +8,9 @@ Mystic Arcade is a lightweight browser-based fantasy arcade built with HTML, CSS
 
 - **Mystic Memory**: flip and match glowing rune cards, with combo scoring and harder rounds.
 - **Fruit Smash**: smash falling enchanted fruit with mouse/touch slicing, and avoid bombs.
-- **Totem Stack**: stack magical blocks into a tower while wind, curses, and gravity shifts interfere.
-- **Spell Tiles**: rhythm-style tile tapping with falling spell tiles, combo pressure, and increasing speed.
-- **Crystal Crush**: match-3 crystal swapping with chain reactions and elemental burst feedback.
+- **Astral Dodge**: guide a glowing nexus orb, collect energy sparks, and avoid incoming void shards.
+- **Circuit Connector**: rotate wire pieces to connect a battery and turn on a bulb.
+- **Number Path**: connect numbered checkpoints in order while filling the entire board.
 
 ## Project Structure
 
@@ -64,7 +64,9 @@ http://127.0.0.1:8000
 - Hub: drag to orbit, hover portals, click a portal or press **Open Portal**.
 - All games: press **Escape** to return to the hub.
 - Fruit Smash: hold and drag through fruit with mouse or touch. Avoid bombs.
-- Totem Stack: click or press **Space** to drop each block. Keep the tower balanced as long as possible.
+- Astral Dodge: move the orb with your mouse or touch, collect green energy, and avoid red void shards.
+- Circuit Connector: click wire pieces to rotate them. Connect the battery to the bulb.
+- Number Path: start at 1, hold and drag through adjacent cells to reach each number in order, and fill every square.
 - Audio: use the top-right music button.
 
 ## Optimization Strategy
@@ -79,6 +81,6 @@ http://127.0.0.1:8000
 ## Development Phases Reflected
 
 - Phase 1: magical hub, portals, particles, fantasy UI, ambient audio.
-- Phase 2: Mystic Memory and Spell Tiles.
-- Phase 3: Fruit Smash and Crystal Crush.
-- Phase 4: Totem Stack, cinematic transitions, and shared polish systems.
+- Phase 2: Mystic Memory and Circuit Connector.
+- Phase 3: Fruit Smash and Number Path.
+- Phase 4: Astral Dodge, cinematic transitions, and shared polish systems.

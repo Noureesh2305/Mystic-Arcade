@@ -10,6 +10,7 @@ export class ArcadeUI {
     this.gameShell = document.querySelector("#game-shell");
     this.gameTitle = document.querySelector("#game-title");
     this.gameSubtitle = document.querySelector("#game-subtitle");
+    this.gameRules = document.querySelector("#game-rules");
     this.gameScore = document.querySelector("#game-score");
     this.realmName = document.querySelector("#realm-name");
     this.toast = document.querySelector("#toast");
@@ -51,6 +52,9 @@ export class ArcadeUI {
     this.gameTitle.textContent = game.title;
     this.gameSubtitle.textContent = game.tagline;
     this.gameScore.textContent = "0";
+    this.gameRules.innerHTML = (game.rules ?? [])
+      .map((rule) => `<div class="rule-card"><strong>${rule.label}</strong>${rule.text}</div>`)
+      .join("");
     this.portalPanel.classList.remove("visible");
     this.gameShell.classList.add("visible");
   }
